@@ -7,6 +7,11 @@ public class Main{
 		bst.insert(root, 3);
 		bst.insert(root, 7);
 		bst.insert(root, 5);
+
+		TreeNode searchNode = bst.search(root, 7);
+		System.out.println("After Searching For a Node:");
+		dfs(searchNode);
+		System.out.println("Whole Tree Traversal");
 		dfs(root);
 	}
 

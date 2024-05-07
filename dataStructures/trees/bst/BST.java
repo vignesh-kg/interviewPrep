@@ -18,4 +18,12 @@ public class BST{
 			}
 		}
 	}
+
+	public TreeNode search(TreeNode root, int val){
+		if(root == null) return null;
+
+		if(root.val == val) return root;
+		else if (root.val < val) return search(root.right, val);
+		else return search(root.left, val);
+	}
 }

@@ -2,7 +2,7 @@ public class BST{
 	public TreeNode delete(TreeNode root, int val){
 		if(root == null) return null;
 		if(root.val == val){
-
+			return helper(root);
 		}
 		while(root != null){
 			if(root.val > val){
@@ -29,8 +29,8 @@ public class BST{
 		else if(node.right == null) return node.left;
 		else {
 			TreeNode leftChild = node.left;
-			TreeNode lastRightLeft = findLastLeftOfRight(node.right);
-			lastRightLeft.left = leftChild;
+			TreeNode lastLeftofRight = findLastLeftOfRight(node.right);
+			lastLeftofRight.left = leftChild;
 			return node.right;
 		}
 	}
@@ -38,7 +38,7 @@ public class BST{
 	private TreeNode findLastLeftOfRight(TreeNode node){
 		if(node.left == null) return node;
 
-		return findLastLeftOfRight(node.right);
+		return findLastLeftOfRight(node.left);
 	}
 
 	public TreeNode insert(TreeNode root, int val){

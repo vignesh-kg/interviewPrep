@@ -14,7 +14,7 @@ public class Main{
 		System.out.println("Whole Tree Traversal");
 		dfs(root);
 
-		bst.delete(root, 7);
+		root = bst.delete(root, 4);
 		System.out.println("After deletion");
 		dfs(root);
 	}

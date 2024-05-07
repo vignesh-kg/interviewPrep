@@ -13,6 +13,10 @@ public class Main{
 		dfs(searchNode);
 		System.out.println("Whole Tree Traversal");
 		dfs(root);
+
+		bst.delete(root, 7);
+		System.out.println("After deletion");
+		dfs(root);
 	}
 
 	private static void dfs(TreeNode root){

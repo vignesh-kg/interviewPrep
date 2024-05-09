@@ -9,8 +9,10 @@ public class Main{
 		System.out.print("\n");
 		//QuickSort qs = new QuickSort();
 		//qs.sort(arr);
-		MergeSort ms = new MergeSort();
-		ms.sort(arr);
+		//MergeSort ms = new MergeSort();
+		//ms.sort(arr);
+		InsertionSort is = new InsertionSort();
+		is.sort(arr);
 		System.out.println("After Sorting");
 		for(int num : arr){
 			System.out.print(num + " ");

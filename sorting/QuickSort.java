@@ -15,8 +15,8 @@ public class QuickSort{
 		int i = low, j = high;
 		int pivot = arr[low];
 		while(i < j){
-			while(i <= high && arr[i] <= pivot) ++i;
-			while(j >= low && arr[j] > pivot) --j;
+			while(i < high && arr[i] >= pivot) ++i;
+			while(j > low && arr[j] < pivot) --j;
 
 			if(i < j){
 				int temp = arr[i];

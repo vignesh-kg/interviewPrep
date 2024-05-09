@@ -7,8 +7,10 @@ public class Main{
 			System.out.print(num + " ");
 		}
 		System.out.print("\n");
-		QuickSort qs = new QuickSort();
-		qs.sort(arr);
+		//QuickSort qs = new QuickSort();
+		//qs.sort(arr);
+		MergeSort ms = new MergeSort();
+		ms.sort(arr);
 		System.out.println("After Sorting");
 		for(int num : arr){
 			System.out.print(num + " ");

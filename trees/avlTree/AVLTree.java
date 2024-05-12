@@ -8,30 +8,24 @@ public class AVLTree{
 			root.right = insert(root.right, val);
 		}
 		root.height = 1 + Math.max(getHeight(root.left), getHeight(root.right));
-		System.out.println("Tree Height: " + root.height);
 		int balanceFactor = getBalanceFactor(root);
-		System.out.println("Balance Factor of Node " + root.val + " is " + balanceFactor);
 
 		if(balanceFactor > 1 && val < root.left.val){
 			root = rightRotate(root);
-			System.out.println("New Balance Factor is : "+ getBalanceFactor(root));
 			return root;
 		} 
 		if(balanceFactor < -1 && val > root.right.val){
 			root = leftRotate(root);
-			System.out.println("New Balance Factor is : "+ getBalanceFactor(root));
 			return root;
 		}
 		if(balanceFactor > 1 && val > root.left.val){
 			root.left = leftRotate(root.left);
 			root = rightRotate(root);
-			System.out.println("New Balance Factor is : "+ getBalanceFactor(root));
 			return root;
 		}
 		if(balanceFactor < -1 && val < root.right.val){
 			root.right = rightRotate(root.right);
 			root = leftRotate(root);
-			System.out.println("New Balance Factor is : "+ getBalanceFactor(root));
 			return root;
 		}
 		return root;
@@ -71,5 +65,48 @@ public class AVLTree{
 		temp.height = 1+Math.max(getHeight(temp.left), getHeight(temp.right));
 
 		return temp;
+	}
+
+	public Node delete(Node root, int key){
+		  if (root == null) {
+    		return root;
+  		}
+
+  		if (key < root.val) {
+    		root.left = delete(root.left, key);
+  		} else if (key > root.val) {
+    		root.right = delete(root.right, key);
+  		} else {
+    		if (root.left == null) {
+      			return root.right;
+    		} else if (root.right == null) {
+      			return root.left;
+  		  	}
+
+    		 Node temp = findLastLeftOfRight(root.right);
+                root.val = temp.val;
+                root.right = delete(root.right, root.val);
+  		}
+
+		root.height = Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+		int balance = getBalanceFactor(root);
+  		if (balance > 1 && getBalanceFactor(root.left) >= 0) {
+    		return rightRotate(root);
+  		} else if (balance > 1 && getBalanceFactor(root.left) < 0) {
+    		root.left = leftRotate(root.left);
+    		return rightRotate(root);
+  		} else if (balance < -1 && getBalanceFactor(root.right) <= 0) {
+    		return leftRotate(root);
+  		} else if (balance < -1 && getBalanceFactor(root.right) > 0) {
+    		root.right = rightRotate(root.right);
+    		return leftRotate(root);
+  		}
+
+  		return root;
+	}
+
+	private Node findLastLeftOfRight(Node node){
+		if(node.left == null) return node;
+		return findLastLeftOfRight(node.left);
 	}
 }

@@ -23,11 +23,31 @@ public class Main{
 
 		List<Integer> preOrder = new ArrayList<>();
 		preOrderTraversal(root, preOrder);
-		
 		System.out.println("preOrderTraversal");
 		for(int i : preOrder){
 			System.out.print(i + " ");
 		}
+		System.out.print("\n");
+		System.out.println("After Deleting Node");
+		root = avlTree.delete(root, 6);
+		root = avlTree.delete(root, 5);
+		root = avlTree.delete(root, 7);
+		inOrder = new ArrayList<>();
+		inOrderTraversal(root, inOrder);
+
+		System.out.println("inOrderTraversal");
+		for(int i : inOrder){
+			System.out.print(i + " ");
+		}
+		System.out.print("\n");
+
+		preOrder = new ArrayList<>();
+		preOrderTraversal(root, preOrder);
+		System.out.println("preOrderTraversal");
+		for(int i : preOrder){
+			System.out.print(i + " ");
+		}
+		System.out.print("\n");
 	}
 
 	private static void inOrderTraversal(Node root, List<Integer> inOrder){
